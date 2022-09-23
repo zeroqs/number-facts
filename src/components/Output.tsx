@@ -2,7 +2,7 @@ import React, {FC, useState} from 'react';
 
 const Output:FC = () => {
 
-    const [state, setState] = useState(false);
+    const [state, setState] = useState<boolean>(false);
 
     return (
         <div

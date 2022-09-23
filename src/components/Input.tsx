@@ -1,12 +1,12 @@
 import React, {ChangeEvent, FC, useCallback, useState} from 'react';
-import {useDispatch} from "react-redux";
 import {addValue} from "../redux/Slices/InputSlice";
 
 import {debounce} from "lodash";
+import {useAppDispatch} from "../hook/redux";
 
 const Input: FC = () => {
     const [searchLocal, setSearchLocal] = useState<string>('');
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
 
 

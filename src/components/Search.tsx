@@ -3,7 +3,7 @@ import Output from "./Output";
 import Button from "./Button";
 import Input from "./Input";
 
-const items: string[] = ["Math", "Trivial", "Date"]
+const items: string[] = ["math", "trivial", "date"]
 
 const Search: FC = () => {
     return (

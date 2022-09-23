@@ -1,13 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 import inputSlice from "./Slices/InputSlice";
+import buttonClick from "./Slices/ButtonSlice";
+import FetchSlice from "./Slices/FetchSlice";
 
 export const store = configureStore({
     reducer: {
         inputValue: inputSlice,
+        buttonValue: buttonClick,
+        fetch: FetchSlice,
     },
 })
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
+
+
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch

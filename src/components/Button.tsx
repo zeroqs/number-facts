@@ -1,14 +1,30 @@
 import React, {FC} from 'react';
+import {buttonClick} from "../redux/Slices/ButtonSlice";
+
+import {useAppDispatch, useAppSelector} from "../hook/redux";
+import {fetch} from "../fetch/axios";
 
 interface BtnProps {
     name: string;
 }
 
 const Button:FC<BtnProps> = ({name}) => {
+    const number = useAppSelector(state => state.inputValue.value)
+    const type = useAppSelector(state => state.buttonValue.type)
+    const dispatch = useAppDispatch();
+
+    const buttonClickType = () => {
+        dispatch(buttonClick(name))
+        dispatch(fetch({number,type}))
+    }
+
+
+
     return (
         <div className="flex mt-6">
             <button
-                onClick={(e) => console.log(e)}
+                onClick={buttonClickType}
+                value={name}
                 className="px-8 py-2.5 leading-5 text-white
                 transition-colors duration-300 transform
                 bg-gray-700 rounded-md hover:bg-gray-600

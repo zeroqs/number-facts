@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const Header = () => {
+const Header:FC = () => {
     return (
         <nav className="bg-white shadow dark:bg-gray-800">
             <div
@@ -13,9 +13,6 @@ const Header = () => {
 
                 <a href="#"
                    className="border-b-2 border-transparent hover:text-gray-800 transition-colors duration-300 transform dark:hover:text-gray-200 hover:border-blue-500 mx-1.5 sm:mx-6">history</a>
-
-
-
             </div>
         </nav>
     );
