@@ -15,9 +15,9 @@ const Button:FC<BtnProps> = ({name}) => {
 
     const buttonClickType = () => {
         dispatch(buttonClick(name))
-        dispatch(fetch({number,type}))
-    }
 
+
+    }
 
 
     return (

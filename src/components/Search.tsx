@@ -2,15 +2,21 @@ import React, {FC, useEffect} from 'react';
 import Button from "./Button";
 import Input from "./Input";
 import Output from "./Output";
-import {useAppSelector} from "../hook/redux";
+import {useAppDispatch, useAppSelector} from "../hook/redux";
+import {fetch} from "../fetch/axios";
 
-const items: string[] = ["math", "trivial", "date"]
+const items: string[] = ["math", "trivia", "date"]
 
 
 const Search: FC = () => {
     const data =  useAppSelector((state) => state.fetch.data)
+    const dispatch = useAppDispatch();
+    const number = useAppSelector(state => state.inputValue.value)
+    const type = useAppSelector(state => state.buttonValue.type)
 
-
+    function btn() {
+        dispatch(fetch({number,type}))
+    }
 
     return (
         <section className="w-full max-w-md px-5 py-4 mx-auto rounded-md">
@@ -24,6 +30,8 @@ const Search: FC = () => {
         </span>
                 <Input/>
             </div>
+            <button className="bg-amber-50" onClick={btn}>найти</button>
+
             <div className="flex justify-between">
                 {items.map((item,i)  => <Button key={i} name={item}/>)}
             </div>

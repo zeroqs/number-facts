@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import {ClickableInputOrButton} from "@testing-library/user-event/utils/click/isClickableInput";
 
 export interface ButtonState {
     type: string;
@@ -11,11 +10,12 @@ const initialState: ButtonState = {
 }
 
 export const ButtonSlice = createSlice({
-    name: 'input',
+    name: 'button',
     initialState,
     reducers: {
         buttonClick(state, action : PayloadAction<any>) {
             state.type = action.payload
+            console.log(action.payload)
         }
     },
 })

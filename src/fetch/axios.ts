@@ -10,7 +10,6 @@ interface fetchProps {
 }
 
 export const fetch = ({number,type} : fetchProps) => {
-
     return async (dispatch : AppDispatch) => {
         try {
             dispatch(FetchSlice.actions.fetching())

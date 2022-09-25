@@ -35,6 +35,7 @@ const Input: FC = () => {
                value={searchLocal} onChange={onChangeSearch}
         />
 
+
     );
 };
 
