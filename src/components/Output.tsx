@@ -1,5 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
-import {useAppSelector} from "../hook/redux";
+import {useAppDispatch, useAppSelector} from "../hook/redux";
+import {favorite,  setIsFavorite} from "../redux/Slices/FavoritesSlice";
 
 interface dataProps {
     fact : string;
@@ -10,7 +11,15 @@ const Output:FC<dataProps> = ({fact,date}) => {
 
     const [state, setState] = useState<boolean>(false);
 
+    const dispatch = useAppDispatch()
 
+    const onClickFavorite = () => {
+        dispatch(setIsFavorite())
+        setState(!state)
+        dispatch(favorite(fact))
+
+
+    }
 
     return (
         <div
@@ -21,7 +30,7 @@ const Output:FC<dataProps> = ({fact,date}) => {
                 <h3 className="font-medium text-gray-700 dark:text-gray-100 hover:underline">{fact}</h3>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</p>
             </a>
-            <button onClick={() => setState(!state)} className="p-2 self-start">
+            <button onClick={onClickFavorite} className="p-2 self-start">
                 <svg aria-hidden="true" className="w-5 h-5  text-yellow-400" fill={state ? "currentColor" : "gray"} viewBox="0 0 20 20"
                      xmlns="http://www.w3.org/2000/svg"><title>Favorites</title>
                     <path
