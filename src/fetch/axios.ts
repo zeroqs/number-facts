@@ -6,14 +6,15 @@ import {ServerResponse} from "../models/models";
 
 interface fetchProps {
     number: string;
-    type: string;
+    name: string;
 }
 
-export const fetch = ({number,type} : fetchProps) => {
+export const fetch = ({number,name} : fetchProps) => {
+
     return async (dispatch : AppDispatch) => {
         try {
             dispatch(FetchSlice.actions.fetching())
-            const response = await axios.get<ServerResponse<any>>(`http://numbersapi.com/${number}/${type}`)
+            const response = await axios.get<ServerResponse<any>>(`http://numbersapi.com/${number}/${name}`)
             dispatch(FetchSlice.actions.fetchingSuccess(response.data))
         } catch (e) {
             dispatch(FetchSlice.actions.fetchingError(e as Error))

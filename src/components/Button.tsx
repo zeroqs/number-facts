@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import {buttonClick} from "../redux/Slices/ButtonSlice";
 
 import {useAppDispatch, useAppSelector} from "../hook/redux";
 import {fetch} from "../fetch/axios";
@@ -10,14 +9,12 @@ interface BtnProps {
 
 const Button:FC<BtnProps> = ({name}) => {
     const number = useAppSelector(state => state.inputValue.value)
-    const type = useAppSelector(state => state.buttonValue.type)
     const dispatch = useAppDispatch();
 
     const buttonClickType = () => {
-        dispatch(buttonClick(name))
-
-
+        dispatch(fetch({number,name}))
     }
+
 
 
     return (
