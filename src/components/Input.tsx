@@ -17,7 +17,7 @@ const Input: FC = () => {
     const updateSearchValue  = useCallback (
         debounce((searchValue) => {
             setSearch(searchValue)
-        },350),[]
+        },100),[]
     )
 
     const onChangeSearch = (event : ChangeEvent<HTMLInputElement>) => {

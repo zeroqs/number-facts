@@ -1,15 +1,25 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
+import {useAppSelector} from "../hook/redux";
 
-const Output:FC = () => {
+interface dataProps {
+    fact : string;
+    date : any;
+}
+
+const Output:FC<dataProps> = ({fact,date}) => {
 
     const [state, setState] = useState<boolean>(false);
 
+
+
     return (
         <div
-            className="absolute inset-x-0 px-6 py-3 mx-5 mt-4 overflow-y-auto bg-white border rounded-md max-h-72 dark:bg-gray-900 dark:border-gray-700 flex justify-between">
+            className="inset-x-0 px-6 py-3 mx-5 mt-4 overflow-y-auto
+            bg-white border rounded-md max-h-72 dark:bg-gray-900
+            dark:border-gray-700 flex justify-between">
             <a href="#" className="block py-1">
-                <h3 className="font-medium text-gray-700 dark:text-gray-100 hover:underline">Software engineer</h3>
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">02/04/2020</p>
+                <h3 className="font-medium text-gray-700 dark:text-gray-100 hover:underline">{fact}</h3>
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</p>
             </a>
             <button onClick={() => setState(!state)} className="p-2 self-start">
                 <svg aria-hidden="true" className="w-5 h-5  text-yellow-400" fill={state ? "currentColor" : "gray"} viewBox="0 0 20 20"

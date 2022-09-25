@@ -1,12 +1,12 @@
 import { createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 
-import {INumber} from "../../models/models";
+import {ServerResponse} from "../../models/models";
 
 export interface NumState {
     loading: boolean;
     error: string;
-    data: INumber[];
+    data: string[];
 }
 
 const initialState: NumState = {
@@ -24,9 +24,9 @@ export const FetchSlice = createSlice({
         fetching(state) {
             state.loading = true
         },
-        fetchingSuccess(state, action : PayloadAction<INumber[]>) {
+        fetchingSuccess(state, action) {
             state.loading = false
-            state.data = action.payload
+            state.data.push(action.payload)
 
         },
         fetchingError(state, action : PayloadAction<Error>) {

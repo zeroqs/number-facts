@@ -4,5 +4,5 @@ export interface INumber  {
 }
 
 export interface ServerResponse<T>  {
-    data: T[]
+    data: string
 }
