@@ -6,12 +6,14 @@ import {ServerResponse} from "../../models/models";
 export interface NumState {
     loading: boolean;
     error: string;
-    data: string[];
+    res: object[];
+    data:string[];
 }
 
 const initialState: NumState = {
     loading: false,
     error: '',
+    res: [],
     data: [],
 }
 
@@ -26,7 +28,11 @@ export const FetchSlice = createSlice({
         },
         fetchingSuccess(state, action) {
             state.loading = false
-            state.data.push(action.payload)
+            state.res.push({
+                ...action.payload,
+                isFavorite: false
+            })
+            state.data.push(action.payload.data)
 
         },
         fetchingError(state, action : PayloadAction<Error>) {

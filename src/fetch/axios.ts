@@ -15,7 +15,7 @@ export const fetch = ({number,name} : fetchProps) => {
         try {
             dispatch(FetchSlice.actions.fetching())
             const response = await axios.get<ServerResponse<any>>(`http://numbersapi.com/${number}/${name}`)
-            dispatch(FetchSlice.actions.fetchingSuccess(response.data))
+            dispatch(FetchSlice.actions.fetchingSuccess(response))
         } catch (e) {
             dispatch(FetchSlice.actions.fetchingError(e as Error))
         }

@@ -11,7 +11,6 @@ const Search: FC = () => {
     const data =  useAppSelector((state) => state.fetch.data)
 
 
-
     return (
         <section className="w-full max-w-md px-5 py-4 mx-auto rounded-md">
             <div className="relative">
