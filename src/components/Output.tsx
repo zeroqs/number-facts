@@ -1,9 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../hook/redux";
-import {favorite,  setIsFavorite} from "../redux/Slices/FavoritesSlice";
 
 interface dataProps {
-    fact : string;
+    fact : any;
     date : any;
 }
 
@@ -14,9 +13,7 @@ const Output:FC<dataProps> = ({fact,date}) => {
     const dispatch = useAppDispatch()
 
     const onClickFavorite = () => {
-        dispatch(setIsFavorite())
         setState(!state)
-        dispatch(favorite(fact))
 
 
     }
