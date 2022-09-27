@@ -25,7 +25,7 @@ const Search: FC = () => {
             <div className="flex justify-between">
                 {items.map((item,i)  => <Button key={i} name={item}/>)}
             </div>
-            {data.map((element : any,i :any) => <Output key={i} fact={element.fact} date={new Date()}/>)}
+            {data.map((element : any,i :any) => <Output key={i} fact={element.fact} date={new Date()} data={data[i]}/>)}
         </section>
     );
 };

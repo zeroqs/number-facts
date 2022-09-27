@@ -1,12 +1,14 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../hook/redux";
+import {toggleFavorite} from "../redux/Slices/FetchSlice";
 
 interface dataProps {
     fact : any;
     date : any;
+    data : any;
 }
 
-const Output:FC<dataProps> = ({fact,date}) => {
+const Output:FC<dataProps> = ({fact,date,data}) => {
 
     const [state, setState] = useState<boolean>(false);
 
@@ -14,6 +16,7 @@ const Output:FC<dataProps> = ({fact,date}) => {
 
     const onClickFavorite = () => {
         setState(!state)
+        dispatch(toggleFavorite(data))
 
 
     }
