@@ -1,9 +1,8 @@
 import React, {FC} from 'react';
+import Number from "./pages/Number";
+import {Route, Routes} from "react-router-dom";
+import Favorites from "./pages/Favorites";
 
-
-import Search from "./components/Search";
-import Header from "./components/Header";
-import Output from "./components/Output";
 
 
 const App: FC = () => {
@@ -11,8 +10,10 @@ const App: FC = () => {
 
     return (
         <div className="App dark:bg-gray-900 h-screen">
-            <Header/>
-            <Search/>
+            <Routes>
+                <Route path="/number" element={<Number/>}/>
+                <Route path="/favorites" element={<Favorites/>}/>
+            </Routes>
         </div>
     );
 }
