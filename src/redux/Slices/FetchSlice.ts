@@ -7,20 +7,16 @@ export interface NumState {
     loading: boolean;
     error: string;
     data: any[];
+    favorite: any[];
 }
 
 const initialState: NumState = {
     loading: false,
     error: '',
     data: [],
+    favorite: [],
 }
 
-function isInArray(id:any, arr:any) {
-    if (arr.some((e:any) => e.id === id)) {
-        return true;
-    }
-    return false;
-}
 
 export const FetchSlice = createSlice({
     name: 'data',
@@ -43,7 +39,16 @@ export const FetchSlice = createSlice({
         },
         toggleFavorite(state,action) {
             console.log(current(state.data))
-            state.data.forEach((post)=>post.fact===action.payload.fact?post.isFavorite=!action.payload.isFavorite:post.isFavorite=post.isFavorite)
+            state.data.forEach((post)=> {
+                if (post.fact===action.payload.fact) {
+                    post.isFavorite=!action.payload.isFavorite
+                    if (post.isFavorite) {
+                        state.favorite.push(post.fact)
+                    } else {
+                        state.favorite = state.favorite.filter((item) => item!==action.payload.fact)
+                    }
+                }
+            })
         }
     },
 
