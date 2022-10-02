@@ -9,12 +9,15 @@ export interface NumState {
     data: any[];
     favorite: any[];
 }
+const data = localStorage.getItem('data');
+const favorite = localStorage.getItem('data');
+
 
 const initialState: NumState = {
     loading: false,
     error: '',
-    data: [],
-    favorite: [],
+    data: data !== null ? JSON.parse(data) : [],
+    favorite:  favorite !== null ? JSON.parse(favorite) : [],
 }
 
 
@@ -27,28 +30,29 @@ export const FetchSlice = createSlice({
         },
         fetchingSuccess(state, action) {
             state.loading = false
-            state.data.push({
+            const temp = {
                 "fact":action.payload,
                 "isFavorite": false,
-            })
-
+            }
+            state.data.push(temp)
+            localStorage.setItem('data',JSON.stringify(state.data))
         },
         fetchingError(state, action : PayloadAction<Error>) {
             state.loading = false
             state.error = action.payload.message
         },
         toggleFavorite(state,action) {
-            console.log(current(state.data))
             state.data.forEach((post)=> {
                 if (post.fact===action.payload.fact) {
                     post.isFavorite=!action.payload.isFavorite
-                    if (post.isFavorite) {
-                        state.favorite.push(post.fact)
-                    } else {
-                        state.favorite = state.favorite.filter((item) => item!==action.payload.fact)
-                    }
                 }
+
             })
+            localStorage.setItem('data',JSON.stringify(state.data))
+            state.favorite = state.data.filter((post) =>
+                (post.isFavorite) && !(state.favorite.includes(post.fact))
+            )
+            localStorage.setItem('favorite',JSON.stringify(state.favorite))
         }
     },
 
