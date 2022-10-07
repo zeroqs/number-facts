@@ -4,10 +4,9 @@ import {toggleFavorite} from "../redux/Slices/FetchSlice";
 
 interface favorProps {
     fact : string;
-    date : any;
 }
 
-const FavoriteOutput:FC<favorProps> = ({fact,date}) => {
+const FavoriteOutput:FC<favorProps> = ({fact}) => {
 
 
     return (
@@ -17,7 +16,6 @@ const FavoriteOutput:FC<favorProps> = ({fact,date}) => {
             dark:border-gray-700 flex justify-between">
             <a href="#" className="block py-1">
                 <h3 className="font-medium text-gray-700 dark:text-gray-100 hover:underline">{fact}</h3>
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</p>
             </a>
             <button className="p-2 self-start">
                 <svg aria-hidden="true" className="w-5 h-5  text-yellow-400"  viewBox="0 0 20 20"

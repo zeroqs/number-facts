@@ -10,7 +10,7 @@ const Favorites = () => {
         <>
             <Header/>
             <section className="w-full max-w-md px-5 py-4 mx-auto rounded-md">
-                {data.map((element : any,i :any) => <FavoriteOutput key={i} fact={element.fact} date={new Date()}/>)}
+                {data.map((element : any,i :any) => <FavoriteOutput key={i} fact={element.fact}/>)}
             </section>
         </>
     );

@@ -1,8 +1,10 @@
-
-export interface INumber  {
-    fact: string
+export interface ServerResponse  {
+    data: string;
+    status: number;
+    statusText: string;
 }
 
-export interface ServerResponse<T>  {
-    data: string
+export interface Store  {
+    fact: string;
+    isFavorite: boolean;
 }

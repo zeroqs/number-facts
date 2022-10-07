@@ -1,14 +1,14 @@
 import React, {FC, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../hook/redux";
 import {toggleFavorite} from "../redux/Slices/FetchSlice";
+import {Store} from "../models/models";
 
 interface dataProps {
     fact : string;
-    date : any;
-    data : any;
+    data : Store;
 }
 
-const Output:FC<dataProps> = ({fact,date,data}) => {
+const Output:FC<dataProps> = ({fact,data}) => {
 
     const dispatch = useAppDispatch()
 
@@ -23,7 +23,6 @@ const Output:FC<dataProps> = ({fact,date,data}) => {
             dark:border-gray-700 flex justify-between">
             <a href="#" className="block py-1">
                 <h3 className="font-medium text-gray-700 dark:text-gray-100 hover:underline">{fact}</h3>
-                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{`${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`}</p>
             </a>
             <button onClick={onClickFavorite} className="p-2 self-start">
                 <svg aria-hidden="true" className="w-5 h-5  text-yellow-400" fill={data.isFavorite ? "currentColor" : "gray"} viewBox="0 0 20 20"
