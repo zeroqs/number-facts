@@ -10,7 +10,7 @@ export interface NumState {
     favorite: any[];
 }
 const data = localStorage.getItem('data');
-const favorite = localStorage.getItem('data');
+const favorite = localStorage.getItem('favorite');
 
 
 const initialState: NumState = {
@@ -19,6 +19,7 @@ const initialState: NumState = {
     data: data !== null ? JSON.parse(data) : [],
     favorite:  favorite !== null ? JSON.parse(favorite) : [],
 }
+
 
 
 export const FetchSlice = createSlice({
@@ -46,19 +47,29 @@ export const FetchSlice = createSlice({
                 if (post.fact===action.payload.fact) {
                     post.isFavorite=!action.payload.isFavorite
                 }
-
             })
             localStorage.setItem('data',JSON.stringify(state.data))
             state.favorite = state.data.filter((post) =>
                 (post.isFavorite) && !(state.favorite.includes(post.fact))
             )
             localStorage.setItem('favorite',JSON.stringify(state.favorite))
+        },
+        deleteFavorite(state, action) {
+
+            state.favorite = state.favorite.filter((post) => post.fact !== action.payload)
+            localStorage.setItem('favorite',JSON.stringify(state.favorite))
+            state.data.forEach((post)=> {
+                if (post.fact === action.payload) {
+                    post.isFavorite=!post.isFavorite
+                }
+
+            })
         }
     },
 
 })
 
-export const { fetching,fetchingSuccess,fetchingError,toggleFavorite } = FetchSlice.actions
+export const { fetching,fetchingSuccess,fetchingError,toggleFavorite,deleteFavorite } = FetchSlice.actions
 
 export default FetchSlice.reducer
 
