@@ -64,6 +64,8 @@ export const FetchSlice = createSlice({
                 }
 
             })
+            localStorage.setItem('data',JSON.stringify(state.data))
+
         }
     },
 
