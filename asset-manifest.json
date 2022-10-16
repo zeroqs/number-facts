@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/number-facts/static/css/main.e88696b0.css",
+    "main.js": "/number-facts/static/js/main.1e1e8763.js",
+    "index.html": "/number-facts/index.html",
+    "main.e88696b0.css.map": "/number-facts/static/css/main.e88696b0.css.map",
+    "main.1e1e8763.js.map": "/number-facts/static/js/main.1e1e8763.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e88696b0.css",
+    "static/js/main.1e1e8763.js"
+  ]
+}
