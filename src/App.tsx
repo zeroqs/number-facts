@@ -15,6 +15,7 @@ const App: FC = () => {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/number" element={<Number/>}/>
                 <Route path="/favorites" element={<Favorites/>}/>
+                <Route path="*" element={<Home/>}/>
             </Routes>
         </div>
     );
