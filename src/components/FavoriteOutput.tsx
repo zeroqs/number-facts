@@ -1,6 +1,4 @@
-import React, {FC, useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from "../hook/redux";
-import {toggleFavorite} from "../redux/Slices/FetchSlice";
+import React, {FC} from 'react';
 import DeleteButton from "./DeleteButton";
 
 interface favorProps {
@@ -14,7 +12,7 @@ const FavoriteOutput:FC<favorProps> = ({fact}) => {
         <div
             className="inset-x-0 px-6 py-3 mx-5 mt-4 overflow-y-auto
             bg-white border rounded-md max-h-72 dark:bg-gray-900
-            dark:border-gray-700 ">
+            dark:border-gray-700">
             <a href="#" className="block py-1">
                 <h3 className="font-medium text-gray-700 dark:text-gray-100 hover:underline">{fact}</h3>
             </a>

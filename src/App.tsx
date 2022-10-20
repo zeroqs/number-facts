@@ -10,7 +10,7 @@ const App: FC = () => {
 
 
     return (
-        <div className="App dark:bg-gray-900 h-screen">
+        <div className="App h-screen dark:bg-gray-900">
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/number" element={<Number/>}/>

@@ -4,10 +4,10 @@ import Search from "../components/Search";
 
 const Number = () => {
     return (
-        <>
+        <div className="dark:bg-gray-900">
             <Header/>
             <Search/>
-        </>
+        </div>
     );
 };
 

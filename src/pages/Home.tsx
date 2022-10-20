@@ -3,7 +3,9 @@ import Header from "../components/Header";
 
 const Home = () => {
     return (
-        <Header/>
+        <div className="dark:bg-gray-900">
+            <Header/>
+        </div>
     );
 };
 
