@@ -1,12 +1,13 @@
 import {createSlice, current} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
+import {Store} from "../../models/models";
 
 
 
 export interface NumState {
     loading: boolean;
     error: string;
-    data: any[];
+    data: Store[];
     favorite: any[];
 }
 const data = localStorage.getItem('data');
@@ -66,12 +67,16 @@ export const FetchSlice = createSlice({
             })
             localStorage.setItem('data',JSON.stringify(state.data))
 
+        },
+        deleteAll(state) {
+            state.data = []
+            localStorage.setItem('data',JSON.stringify(state.data))
         }
     },
 
 })
 
-export const { fetching,fetchingSuccess,fetchingError,toggleFavorite,deleteFavorite } = FetchSlice.actions
+export const { fetching,fetchingSuccess,fetchingError,toggleFavorite,deleteFavorite,deleteAll } = FetchSlice.actions
 
 export default FetchSlice.reducer
 
