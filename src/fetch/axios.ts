@@ -15,7 +15,8 @@ export const fetch = ({number,name} : fetchProps) => {
     return async (dispatch : AppDispatch) => {
         try {
             dispatch(FetchSlice.actions.fetching())
-            const response = await axios.get<ServerResponse[]>(url)
+            // @ts-ignore
+            const response = await axios.get<ServerResponse[]>(url,{mode: 'no-cors'})
             dispatch(FetchSlice.actions.fetchingSuccess(response.data))
         } catch (e) {
             dispatch(FetchSlice.actions.fetchingError(e as Error))
